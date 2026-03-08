@@ -1,0 +1,228 @@
+/* frontend/src/App.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@900&display=swap');
+
+body {
+  margin: 0;
+  background-color: #0a0a0f;
+  font-family: system-ui, -apple-system, sans-serif;
+  color: #e0e0e0;
+  overflow: hidden; 
+}
+
+/* --- Layout Wrappers --- */
+.main-layout {
+  display: flex;
+  min-height: 100vh;
+  width: 100vw;
+  background: #0a0a0f;
+}
+
+.center-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow-y: auto;
+  align-items: center; /* Centers the app container */
+}
+
+/* --- Consolidated Right Sidebar --- */
+.sidebar-right {
+  width: 400px;
+  background: #0a0a0a;
+  border-left: 1px solid #222;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  flex-shrink: 0;
+}
+
+.sidebar-controls {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border-bottom: 1px solid #222;
+  background: #111;
+}
+
+/* --- Cartridge Style Wallet Button --- */
+.cartridge-btn-wrapper button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background-color: #0d0d0d !important;
+  color: #d4af37 !important;
+  border: 1px solid #d4af37 !important;
+  border-radius: 8px !important;
+  padding: 0.75rem 1rem !important;
+  font-weight: 600 !important;
+  font-size: 1rem !important;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.cartridge-btn-wrapper button:hover {
+  background-color: #1a1a1a !important;
+  box-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
+}
+
+.token-balance {
+  background: #1a1a1a;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  color: #ffd700;
+  border: 1px solid #333;
+  font-weight: bold;
+  text-align: center;
+}
+
+.game-title {
+  margin: 0;
+  font-family: 'Inter', sans-serif; /* High-impact modern font */
+  font-size: 4rem; /* Increased for better presence on 2k monitors */
+  font-weight: 900;
+  font-style: italic;
+  text-transform: uppercase;
+  letter-spacing: -3px; /* Tight tracking for that "Pro" look */
+  line-height: 1;
+  
+  /* Create a "metallic" gradient effect */
+  background: linear-gradient(to bottom, #ffffff 0%, #a0a0a0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+  /* Subtle glow to separate it from the dark background */
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.1));
+  
+  /* Ensure it scales nicely on smaller resolutions */
+  transition: font-size 0.3s ease;
+}
+
+@media (max-width: 1440px) {
+  .game-title {
+    font-size: 3rem;
+    letter-spacing: -2px;
+  }
+}
+
+/* --- Accordion Panels (Logs & Debug) --- */
+.accordion-section {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid #222;
+  transition: flex 0.3s ease;
+}
+
+.accordion-section.expanded {
+  flex: 1; /* Takes up available vertical space (~33% if both are open) */
+  overflow: hidden; /* Contains the inner scroll */
+}
+
+.accordion-header {
+  padding: 1rem 1.5rem;
+  background: #151515;
+  color: #fff;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1rem;
+}
+
+.accordion-header:hover {
+  background: #1a1a1a;
+}
+
+.accordion-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem;
+  background: #0a0a0a;
+}
+
+/* --- Center App Container --- */
+.app-container {
+  max-width: 600px; 
+  width: 100%;
+  margin: 0 auto;
+  min-height: 100vh;
+  background-color: transparent;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  box-sizing: border-box;
+}
+
+.app-header {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.placeholder-state {
+  text-align: center;
+  padding: 2rem;
+  border: 1px dashed #333;
+  border-radius: 8px;
+  color: #888;
+}
+
+/* --- Admin Panel (Fixed for Center Layout) --- */
+.admin-panel {
+  width: 100%;
+  background: transparent;
+  /* Removed absolute positioning & height here! */
+}
+
+.admin-content {
+  padding: 1rem 0; /* Reduced padding since it's embedded */
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.admin-content h3 { margin: 0; color: #ff4757; }
+.admin-content h4 { margin: 0 0 0.5rem 0; color: #eee; font-size: 0.9rem; }
+.admin-desc { font-size: 0.85rem; color: #aaa; margin-top: -1rem; margin-bottom: 0.5rem; }
+
+.admin-section {
+  background: #2a2a32;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.wager-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.btn-admin-wager {
+  background: #3498db;
+  color: white;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-admin-action {
+  width: 100%;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-admin-action.simulate { background: #f39c12; color: #111; }
+.btn-admin-action.claim { background: #2ecc71; color: #111; }
+
+button:disabled { opacity: 0.5; cursor: not-allowed; }
+button:hover:not(:disabled) { filter: brightness(1.1); }

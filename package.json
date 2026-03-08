@@ -1,0 +1,14 @@
+{
+  "name": "dojo-jam",
+  "version": "1.0.0",
+  "description": "![Dojo Starter](./assets/cover.png)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@cartridge/connector": "^0.13.9"
+  }
+}

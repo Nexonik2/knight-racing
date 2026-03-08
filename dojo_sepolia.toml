@@ -1,0 +1,12 @@
+[world]
+name = "Knight Racing"
+seed = "knight_racing_sepol" 
+
+[namespace]
+default = "knight_race"
+
+[env]
+rpc_url = "https://api.cartridge.gg/x/starknet/sepolia"
+
+[writers]
+"knight_race" = ["knight_race-actions"]
