@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@cartridge/connector": "^0.13.9",
     "@cartridge/controller": "^0.13.9",
     "@starknet-react/core": "^5.0.3",
     "graphql": "^16.13.1",
