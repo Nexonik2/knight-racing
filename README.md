@@ -1,60 +1,76 @@
-# Knight Racing
+![Dojo Starter](./assets/cover.png)
 
-## Project Summary
-Knight Racing is a fully on-chain, medieval-themed wagering and racing simulator built on Starknet using the Dojo engine. Players initialize race lobbies, place wagers on their  knights using testnet $STRK, and claim payouts if they correctly predict the winner.
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset=".github/mark-dark.svg">
+  <img alt="Dojo logo" align="right" width="120" src=".github/mark-light.svg">
+</picture>
 
-**Features:**
-* Fully on-chain race resolution logic powered by Cairo
-* Real-time indexing via Torii
-* ERC-20 wager and reward payout system
-* Frictionless UX using Cartridge Controller multicalls for approvals and contract interactions
-* Desktop-first Game Dashboard built with React
+<a href="https://x.com/ohayo_dojo">
+<img src="https://img.shields.io/twitter/follow/dojostarknet?style=social"/>
+</a>
+<a href="https://github.com/dojoengine/dojo/stargazers">
+<img src="https://img.shields.io/github/stars/dojoengine/dojo?style=social"/>
+</a>
 
-## Source Code
-https://github.com/Nexonik2/knight-racing
+[![discord](https://img.shields.io/badge/join-dojo-green?logo=discord&logoColor=white)](https://discord.com/invite/dojoengine)
+[![Telegram Chat][tg-badge]][tg-url]
 
-## Live Demo
-https://knight-racing.vercel.app/
-## How to Play
-1. **Connect:** Use the Cartridge Controller in the top-right to sign in.
-2. **Setup:** Ensure you have testnet $STRK (use faucet link provided in-app if needed). 
-3. **Spawn:** Click the "Spawn new race" button to initialize a new race lobby on Sepolia. 
-4. **Wager:** Select one of the four knights and place a 0.1 STRK wager. [cite: 2026-03-09]
-5. **Race:** Once wagers are locked, resolve the race to trigger on-chain winner calculation.
-6. **Claim:** If your knight wins, click "Claim Rewards" to receive your payout.
-7. **Check Other Games:** Expand the Race Log on the side to check live and finished races. Players can place wagers in other lobbies as long as they are open for wagers (only lobby creator controls its state advancement)
+[tg-badge]: https://img.shields.io/endpoint?color=neon&logo=telegram&label=chat&style=flat-square&url=https%3A%2F%2Ftg.sumanjay.workers.dev%2Fdojoengine
+[tg-url]: https://t.me/dojoengine
 
-## Rules
-* Games can be set up with any token by their creator (frontend default: testnet $STRK).
-* Wagers can only be placed in the token the game's creator specified during its creation (frontend default amount: 0.1).
-* Only one wager can be placed per account in the same race.
-* Wagers can be placed in any amounts of the specified token (as long as the wallet holds sufficient funds).
-* Races can result in a tie (in which case all players who bet on any of the winners receive a pro-rata payout)
+# Dojo Starter: Official Guide
 
+A quickstart guide to help you build and deploy your first Dojo provable game.
 
-## Architecture
+Read the full tutorial [here](https://dojoengine.org/tutorial/dojo-starter).
 
-### Smart Contracts (Cairo)
-Built with Dojo 1.8.6:
-* **Models:**
-    * `GameTracker` - A global singleton tracking the current `race_id` counter.
-    * `Race` - Stores the lobby state (Wagering/Racing/Finished), the required `fee_token`, and the total/winning prize pools.
-    * `Knight` - Tracks individual knight positions, race rank, and total funds wagered on them.
-    * `Wager` - Maps a player's address to their chosen knight, wager amount, and calculated reward.
-* **Systems (`IActions`):**
-    * `spawn_race(fee_token)` - Initializes a new race entity and assigns the ERC-20 fee token.
-    * `place_wager(race_id, knight_id, amount)` - Handles ERC-20 `transfer_from` logic and records player bets.
-    * `lock_betting(race_id)` - Transitions the race state to prevent late wagers.
-    * `resolve_race(race_id)` - Executes on-chain logic to calculate knight positions and final ranks.
-    * `claim_reward(race_id)` - Calculates and transfers the winning pool share back to the player via ERC-20
+## Running Locally
 
-Sepolia Actions Contract Address: 0x4e90fe93ae9c4372a1550d81535b29b033865bd17516aa2a779e28fa0a5959b
+#### Terminal one (Make sure this is running)
 
-### Client
-* React + Vite (JavaScript)
-* Dojo SDK for real-time blockchain synchronization.
-* Cartridge Controller for wallet management and transaction bundling.
+```bash
+# Run Katana
+katana --dev --dev.no-fee
+```
 
-## Team Members
-* @Nexonik2 (GitHub)
-* @Nexonik (X)
+#### Terminal two
+
+```bash
+# Build the example
+sozo build
+
+# Inspect the world
+sozo inspect
+
+# Migrate the example
+sozo migrate
+
+# Start Torii
+# Replace <WORLD_ADDRESS> with the address of the deployed world from the previous step
+torii --world <WORLD_ADDRESS> --http.cors_origins "*"
+```
+
+## Docker
+You can start stack using docker compose. [Here are the installation instruction](https://docs.docker.com/engine/install/)
+
+```bash
+docker compose up
+```
+You'll get all services logs in the same terminal instance. Whenever you want to stop just ctrl+c
+
+---
+
+## Contribution
+
+1. **Report a Bug**
+
+    - If you think you have encountered a bug, and we should know about it, feel free to report it [here](https://github.com/dojoengine/dojo-starter/issues) and we will take care of it.
+
+2. **Request a Feature**
+
+    - You can also request for a feature [here](https://github.com/dojoengine/dojo-starter/issues), and if it's viable, it will be picked for development.
+
+3. **Create a Pull Request**
+    - It can't get better then this, your pull request will be appreciated by the community.
+
+Happy coding!
