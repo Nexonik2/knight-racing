@@ -9,7 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@cartridge/connector": "^0.13.9",
-    "@cartridge/controller": "^0.13.9"
+    "@cartridge/connector": "^0.13.9"
   }
 }

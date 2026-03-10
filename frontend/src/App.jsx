@@ -12,7 +12,6 @@ import "./App.css";
 
 const FEE_TOKEN_ADDRESS = import.meta.env.VITE_WAGER_TOKEN_ADDRESS || "0x04718f5a0fc34cc1af16a1cdee98ffb20c31f5cd61d6ab07201858f4287c938d";
 const ACTIONS_CONTRACT_ADDRESS = import.meta.env.VITE_ACTIONS_ADDRESS;
-const SHOW_DEBUG_PANEL = import.meta.env.VITE_SHOW_DEBUG === "true";
 
 function AppContent() {
   const { races, activeRace, knights, wagers, loading } = useRaceState();
@@ -203,7 +202,7 @@ function AppContent() {
           
           {showDebug && (
             <div className="accordion-content">
-              {SHOW_DEBUG_PANEL ? <DebugDashboard /> : <p style={{ color: '#888' }}>Debug only available in DEV mode.</p>}
+              {import.meta.env.DEV ? <DebugDashboard /> : <p style={{ color: '#888' }}>Debug only available in DEV mode.</p>}
             </div>
           )}
         </div>
